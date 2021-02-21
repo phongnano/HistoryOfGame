@@ -4,17 +4,17 @@ import HistoryOfGame.BLL_HistoryOfGame;
 import javax.swing.JOptionPane;
 
 public class frmMenu extends javax.swing.JInternalFrame {
-
+    
     frmHome home;
     frmPlay play;
     public static int i;
     BLL_HistoryOfGame bll = new BLL_HistoryOfGame();
-
+    
     public frmMenu(frmHome home) {
         initComponents();
         this.home = home;
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -77,22 +77,22 @@ public class frmMenu extends javax.swing.JInternalFrame {
                 .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(269, Short.MAX_VALUE)
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addComponent(lblTitle)
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addComponent(btnPlay)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioVietNam)
                     .addComponent(radioSouthAsian))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         pack();
@@ -104,7 +104,7 @@ public class frmMenu extends javax.swing.JInternalFrame {
         } else {
             checkRadio(evt);
             home.Play();
-            this.dispose();
+            groups.clearSelection();
         }
     }//GEN-LAST:event_Play
 

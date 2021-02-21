@@ -12,8 +12,6 @@ public class DAL_HistoryOfGame {
     private Connection con = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;
-    private int key_correct;
-    private String quest;
 
     public ArrayList<DTO_HistoryOfGame> ShowQuestionAnswer(int i) {
         ArrayList<DTO_HistoryOfGame> result = new ArrayList<>();
@@ -30,7 +28,7 @@ public class DAL_HistoryOfGame {
                 dto.setAnswer_b(rs.getString("KEY_B"));
                 dto.setAnswer_c(rs.getString("KEY_C"));
                 dto.setAnswer_d(rs.getString("KEY_D"));
-                dto.setAnswer_correct(rs.getInt("KEY_CORRECT"));
+                dto.setAnswer_correct(rs.getString("KEY_CORRECT"));
                 result.add(dto);
             }
         } catch (SQLException e) {
@@ -45,13 +43,14 @@ public class DAL_HistoryOfGame {
         return result;
     }
 
-    public int getCorrectAnswer(int i, DTO_HistoryOfGame dto) {
+    public String getCorrectAnswer(int i, DTO_HistoryOfGame dto) {
         String query = "select ques.KEY_CORRECT from CATALOGS cata, QUESTIONS ques where cata.IDCATA = ques.IDCATA and cata.IDCATA = ?";
         try {
             db = new DatabaseAccess();
             con = db.getConnection();
             ps = con.prepareStatement(query);
             ps.setInt(1, i);
+            ps.setString(2, dto.getAnswer_correct());
             rs = ps.executeQuery();
             while (rs.next()) {
                 dto.getAnswer_correct();

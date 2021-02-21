@@ -7,7 +7,7 @@ public class DTO_HistoryOfGame {
     String answer_b;
     String answer_c;
     String answer_d;
-    int answer_correct;
+    String answer_correct;
 
     public String getQuestion() {
         return question;
@@ -49,11 +49,11 @@ public class DTO_HistoryOfGame {
         this.answer_d = answer_d;
     }
 
-    public int getAnswer_correct() {
+    public String getAnswer_correct() {
         return answer_correct;
     }
 
-    public void setAnswer_correct(int answer_correct) {
+    public void setAnswer_correct(String answer_correct) {
         this.answer_correct = answer_correct;
     }
 
