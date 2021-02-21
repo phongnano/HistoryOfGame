@@ -12,10 +12,12 @@ public class DAL_HistoryOfGame {
     private Connection con = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;
+    private int key_correct;
+    private String quest;
 
     public ArrayList<DTO_HistoryOfGame> ShowQuestionAnswer(int i) {
         ArrayList<DTO_HistoryOfGame> result = new ArrayList<>();
-        String query = "select ques.QUESTION, ques.KEY_A, ques.KEY_B, ques.KEY_C, ques.KEY_D from CATALOGS cata, QUESTIONS ques where cata.IDCATA = ques.IDCATA and cata.IDCATA = " + i + " order by random() offset 0 rows fetch next 1 row only";
+        String query = "select ques.QUESTION, ques.KEY_A, ques.KEY_B, ques.KEY_C, ques.KEY_D, ques.KEY_CORRECT from CATALOGS cata, QUESTIONS ques where cata.IDCATA = ques.IDCATA and cata.IDCATA = " + i + " order by random() offset 0 rows fetch first 1 rows only";
         try {
             db = new DatabaseAccess();
             con = db.getConnection();
@@ -28,6 +30,7 @@ public class DAL_HistoryOfGame {
                 dto.setAnswer_b(rs.getString("KEY_B"));
                 dto.setAnswer_c(rs.getString("KEY_C"));
                 dto.setAnswer_d(rs.getString("KEY_D"));
+                dto.setAnswer_correct(rs.getInt("KEY_CORRECT"));
                 result.add(dto);
             }
         } catch (SQLException e) {
@@ -40,5 +43,21 @@ public class DAL_HistoryOfGame {
             }
         }
         return result;
+    }
+
+    public int getCorrectAnswer(int i, DTO_HistoryOfGame dto) {
+        String query = "select ques.KEY_CORRECT from CATALOGS cata, QUESTIONS ques where cata.IDCATA = ques.IDCATA and cata.IDCATA = ?";
+        try {
+            db = new DatabaseAccess();
+            con = db.getConnection();
+            ps = con.prepareStatement(query);
+            ps.setInt(1, i);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                dto.getAnswer_correct();
+            }
+        } catch (SQLException e) {
+        }
+        return dto.getAnswer_correct();
     }
 }

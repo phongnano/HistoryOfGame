@@ -102,16 +102,20 @@ public class frmMenu extends javax.swing.JInternalFrame {
         if (radioVietNam.isSelected() == false && radioSouthAsian.isSelected() == false) {
             JOptionPane.showMessageDialog(null, "Vui lòng chọn vùng để chơi !", "Thông báo", JOptionPane.QUESTION_MESSAGE);
         } else {
+            checkRadio(evt);
             home.Play();
+            this.dispose();
         }
     }//GEN-LAST:event_Play
 
     private void checkRadio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkRadio
         if (radioVietNam.isSelected()) {
-            bll.ShowQuestionAnswer(0);
+            i = 0;
+            bll.ShowQuestionAnswer(i);
         }
         if (radioSouthAsian.isSelected()) {
-            bll.ShowQuestionAnswer(1);
+            i = 1;
+            bll.ShowQuestionAnswer(i);
         }
     }//GEN-LAST:event_checkRadio
 
