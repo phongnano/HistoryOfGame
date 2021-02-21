@@ -111,13 +111,23 @@ public class frmHome extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Login(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login
+    public void Play() {
         if (play == null || play.isClosed()) {
             play = new frmPlay(this);
             desktopHome.add(play);
             play.show();
         } else {
             play.show();
+        }
+    }
+
+    private void Login(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Login
+        if (menu == null || menu.isClosed()) {
+            menu = new frmMenu(this);
+            desktopHome.add(menu);
+            menu.show();
+        } else {
+            menu.show();
         }
     }//GEN-LAST:event_Login
 

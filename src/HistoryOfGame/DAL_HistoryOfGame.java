@@ -13,9 +13,9 @@ public class DAL_HistoryOfGame {
     private PreparedStatement ps = null;
     private ResultSet rs = null;
 
-    public ArrayList<DTO_HistoryOfGame> ShowQuestionAnswer() {
+    public ArrayList<DTO_HistoryOfGame> ShowQuestionAnswer(int i) {
         ArrayList<DTO_HistoryOfGame> result = new ArrayList<>();
-        String query = "select ques.QUESTION, ques.KEY_A, ques.KEY_B, ques.KEY_C, ques.KEY_D from CATALOGS cata, QUESTIONS ques where cata.IDCATA = ques.IDCATA and cata.IDCATA = 0";
+        String query = "select ques.QUESTION, ques.KEY_A, ques.KEY_B, ques.KEY_C, ques.KEY_D from CATALOGS cata, QUESTIONS ques where cata.IDCATA = ques.IDCATA and cata.IDCATA = " + i + " order by random() offset 0 rows fetch next 1 row only";
         try {
             db = new DatabaseAccess();
             con = db.getConnection();

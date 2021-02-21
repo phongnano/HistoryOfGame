@@ -34,5 +34,6 @@ insert into Questions
 values ('Đế chế Angkor thuộc quốc gia nào?', 'Malaysia', 'Indonesia', 'Lào', 'Campuchia', 'key_d', 1);
 
 select ques.QUESTION, ques.KEY_A, ques.KEY_B, ques.KEY_C, ques.KEY_D
-from CATALOGS cata, QUESTIONS ques
+from CATALOGS cata, QUESTIONS ques 
 where cata.IDCATA = ques.IDCATA and cata.IDCATA = 0
+order by random() offset 0 rows fetch next 1 row only

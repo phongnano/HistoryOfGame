@@ -14,7 +14,7 @@ public class frmPlay extends javax.swing.JInternalFrame {
     public frmPlay(frmHome home) {
         initComponents();
         this.home = home;
-        arr = bll.ShowQuestionAnswer();
+        arr = bll.ShowQuestionAnswer(frmMenu.i);
         for (int i = 0; i < arr.size(); i++) {
             dto = arr.get(i);
             String qst = dto.getQuestion();
