@@ -6,6 +6,8 @@ public class frmHome extends javax.swing.JFrame {
     private frmMenu menu;
     private frmPlay play;
     private frmLogin login;
+    private frmHistory history;
+    public static String item;
 
     public frmHome() {
         initComponents();
@@ -22,6 +24,8 @@ public class frmHome extends javax.swing.JFrame {
         itemPassword = new javax.swing.JMenuItem();
         itemLogout = new javax.swing.JMenuItem();
         mnHistory = new javax.swing.JMenu();
+        itemHistory = new javax.swing.JMenuItem();
+        itemDetailed = new javax.swing.JMenuItem();
         mnInfo = new javax.swing.JMenu();
         itemTutorial = new javax.swing.JMenuItem();
         itemAuth = new javax.swing.JMenuItem();
@@ -39,6 +43,8 @@ public class frmHome extends javax.swing.JFrame {
             desktopHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 577, Short.MAX_VALUE)
         );
+
+        mnHome.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
 
         mnSystem.setForeground(new java.awt.Color(51, 51, 51));
         mnSystem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/system.png"))); // NOI18N
@@ -74,6 +80,27 @@ public class frmHome extends javax.swing.JFrame {
         mnHistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/history.png"))); // NOI18N
         mnHistory.setText("Lịch sử");
         mnHistory.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+
+        itemHistory.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        itemHistory.setForeground(new java.awt.Color(0, 102, 255));
+        itemHistory.setText("Xem lịch sử chơi");
+        itemHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                History(evt);
+            }
+        });
+        mnHistory.add(itemHistory);
+
+        itemDetailed.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        itemDetailed.setForeground(new java.awt.Color(204, 0, 102));
+        itemDetailed.setText("Xem nội dung chi tiết");
+        itemDetailed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DetailedScore(evt);
+            }
+        });
+        mnHistory.add(itemDetailed);
+
         mnHome.add(mnHistory);
 
         mnInfo.setForeground(new java.awt.Color(153, 204, 0));
@@ -144,6 +171,28 @@ public class frmHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Login
 
+    private void History(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_History
+        item = itemHistory.getText();
+        if (history == null || history.isClosed()) {
+            history = new frmHistory(this);
+            desktopHome.add(history);
+            history.show();
+        } else {
+            history.show();
+        }
+    }//GEN-LAST:event_History
+
+    private void DetailedScore(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DetailedScore
+        item = itemDetailed.getText();
+        if (history == null || history.isClosed()) {
+            history = new frmHistory(this);
+            desktopHome.add(history);
+            history.show();
+        } else {
+            history.show();
+        }
+    }//GEN-LAST:event_DetailedScore
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(() -> {
@@ -154,6 +203,8 @@ public class frmHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopHome;
     private javax.swing.JMenuItem itemAuth;
+    private javax.swing.JMenuItem itemDetailed;
+    private javax.swing.JMenuItem itemHistory;
     private javax.swing.JMenuItem itemLogin;
     private javax.swing.JMenuItem itemLogout;
     private javax.swing.JMenuItem itemPassword;

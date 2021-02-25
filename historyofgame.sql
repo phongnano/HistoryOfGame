@@ -24,7 +24,7 @@ values ('30-04-1975 kỷ niệm sự kiện gì trong chiến tranh Việt Nam?'
 insert into Questions
 values ('Sài Gòn đổi tên thành TPHCM vào năm nào?', '1975', '1976', '1977', '1978', '1976', 0);
 insert into Questions
-values ('Chiến tranh biên giới phía bắc giữa Việt Nam và Trurng Quốc bắt đầu vào tháng mấy năm 1979?', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 2', 0);
+values ('Chiến tranh biên giới phía bắc giữa Việt Nam và Trung Quốc bắt đầu vào tháng mấy năm 1979?', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 2', 0);
 
 insert into Questions
 values ('ASEAN được thành lập năm nào?', '1966', '1969', '1967', '1962', '1967', 1);

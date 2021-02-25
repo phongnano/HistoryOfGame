@@ -1,12 +1,85 @@
 package GUI;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class frmHistory extends javax.swing.JInternalFrame {
 
     frmHome home;
+    int count = 0;
 
     public frmHistory(frmHome home) {
         initComponents();
         this.home = home;
+        if (frmHome.item.equals("Xem lịch sử chơi")) {
+            readDataToFile();
+        }
+        if (frmHome.item.equals("Xem nội dung chi tiết")) {
+            readDetailToFile();
+        }
+    }
+
+    private void countDataFile() {
+        File file = new File("HistoryOfGame.txt");
+        try (Scanner sc = new Scanner(file)) {
+            while (sc.hasNextLine()) {
+                sc.nextLine();
+                count++;
+                if (count > 10) {
+                    new FileWriter("HistoryOfGame.txt", false).close();
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(frmHistory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void countDetailFile() {
+        File file = new File("DetailOfHistory.txt");
+        try (Scanner sc = new Scanner(file)) {
+            while (sc.hasNextLine()) {
+                sc.nextLine();
+                count++;
+                if (count > 10) {
+                    new FileWriter("DetailOfHistory.txt", false).close();
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(frmHistory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void readDataToFile() {
+        String data = "ĐÚNG\t\tSAI\t\tBỎ QUA\t\tĐIỂM\t\tKHU VỰC\n";
+        try (FileReader fr = new FileReader("HistoryOfGame.txt")) {
+            int i;
+            while ((i = fr.read()) != -1) {
+                data += (char) i;
+            }
+            fr.close();
+        } catch (IOException ex) {
+            Logger.getLogger(frmHistory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        txtHistory.setText(data);
+    }
+
+    private void readDetailToFile() {
+        String data = "CHI TIẾT\n";
+        try (FileReader fr = new FileReader("DetailOfHistory.txt")) {
+            int i;
+            while ((i = fr.read()) != -1) {
+                data += (char) i;
+            }
+            fr.close();
+        } catch (IOException ex) {
+            Logger.getLogger(frmHistory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        txtHistory.setText(data);
     }
 
     @SuppressWarnings("unchecked")

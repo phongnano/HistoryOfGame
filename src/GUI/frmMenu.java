@@ -4,17 +4,18 @@ import HistoryOfGame.BLL_HistoryOfGame;
 import javax.swing.JOptionPane;
 
 public class frmMenu extends javax.swing.JInternalFrame {
-    
+
     frmHome home;
     frmPlay play;
     public static int i;
+    public static String cata;
     BLL_HistoryOfGame bll = new BLL_HistoryOfGame();
-    
+
     public frmMenu(frmHome home) {
         initComponents();
         this.home = home;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -110,10 +111,12 @@ public class frmMenu extends javax.swing.JInternalFrame {
     private void checkRadio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkRadio
         if (radioVietNam.isSelected()) {
             i = 0;
+            cata = radioVietNam.getText();
             bll.ShowQuestionAnswer(i);
         }
         if (radioSouthAsian.isSelected()) {
             i = 1;
+            cata = radioSouthAsian.getText();
             bll.ShowQuestionAnswer(i);
         }
     }//GEN-LAST:event_checkRadio

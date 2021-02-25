@@ -3,10 +3,14 @@ package GUI;
 import HistoryOfGame.BLL_HistoryOfGame;
 import HistoryOfGame.DAL_HistoryOfGame;
 import HistoryOfGame.DTO_HistoryOfGame;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -18,13 +22,35 @@ public class frmPlay extends javax.swing.JInternalFrame {
     BLL_HistoryOfGame bll = new BLL_HistoryOfGame();
     ArrayList<DTO_HistoryOfGame> arr = new ArrayList<>();
     List<String> radio;
-    String key_correct;
-    static int countCorrect, countWrong;
+    static String key_correct;
+    static int countCorrect, countWrong, countSkip, countTimes, score = 1;
+    Object obj;
+    JButton btn;
 
     public frmPlay(frmHome home) {
         initComponents();
         this.home = home;
         StartUp();
+    }
+
+    private void writeDataToFile() {
+        String data = Integer.toString(countCorrect) + "\t\t" + Integer.toString(countWrong) + "\t\t" + Integer.toString(countSkip) + "\t\t" + Integer.toString(score) + "\t\t" + frmMenu.cata + "\n";
+        try (FileWriter fw = new FileWriter("HistoryOfGame.txt", true)) {
+            fw.write(data);
+            fw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(frmPlay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void writeDetailToFile() {
+        String data = "Lần: " + Integer.toString(countTimes++) + "\nCâu hỏi: " + lblQuestion.getText() + "\nCâu trả lời đúng: " + key_correct + "\nCâu bạn chọn: " + btn.getText() + "\n\n";
+        try (FileWriter fw = new FileWriter("DetailOfHistory.txt", true)) {
+            fw.write(data);
+            fw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(frmPlay.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void StartUp() {
@@ -58,6 +84,7 @@ public class frmPlay extends javax.swing.JInternalFrame {
         btnB = new javax.swing.JButton();
         btnC = new javax.swing.JButton();
         btnD = new javax.swing.JButton();
+        btnSkip = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -126,6 +153,15 @@ public class frmPlay extends javax.swing.JInternalFrame {
             }
         });
 
+        btnSkip.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        btnSkip.setForeground(new java.awt.Color(0, 153, 153));
+        btnSkip.setText("Bỏ qua");
+        btnSkip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Skip(evt);
+            }
+        });
+
         javax.swing.GroupLayout panAnswerLayout = new javax.swing.GroupLayout(panAnswer);
         panAnswer.setLayout(panAnswerLayout);
         panAnswerLayout.setHorizontalGroup(
@@ -143,9 +179,11 @@ public class frmPlay extends javax.swing.JInternalFrame {
                         .addComponent(btnD, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(panAnswerLayout.createSequentialGroup()
-                .addGap(376, 376, 376)
-                .addComponent(btnFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(300, 300, 300)
+                .addComponent(btnFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82)
+                .addComponent(btnSkip, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         panAnswerLayout.setVerticalGroup(
             panAnswerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +193,9 @@ public class frmPlay extends javax.swing.JInternalFrame {
                     .addComponent(btnA, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnB, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(btnFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panAnswerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSkip, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(panAnswerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnC, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,25 +228,33 @@ public class frmPlay extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Finish(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Finish
-        JOptionPane.showMessageDialog(null, "Đáp án đúng: " + countCorrect + "\nĐáp án sai: " + countWrong, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-        countCorrect = countWrong = 0;
+        writeDataToFile();
+        countCorrect = countWrong = countSkip = 0;
         this.dispose();
     }//GEN-LAST:event_Finish
 
     private void checkAnswers(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAnswers
         key_correct = dal.getCorrectAnswer(frmMenu.i, dto);
-        Object obj = evt.getSource();
+        obj = evt.getSource();
         if (obj instanceof JButton) {
-            JButton btn = (JButton) obj;
+            btn = (JButton) obj;
             if (key_correct.equals(btn.getText())) {
-                countCorrect++;
-                StartUp();
+                JOptionPane.showMessageDialog(null, "Bạn trả lời đúng !", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                ++score;
+                ++countCorrect;
             } else {
-                countWrong++;
-                StartUp();
+                JOptionPane.showMessageDialog(null, "Bạn trả lời sai !", "Thông báo", JOptionPane.ERROR_MESSAGE);
+                ++countWrong;
             }
+            writeDetailToFile();
+            StartUp();
         }
     }//GEN-LAST:event_checkAnswers
+
+    private void Skip(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Skip
+        ++countSkip;
+        StartUp();
+    }//GEN-LAST:event_Skip
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -215,6 +263,7 @@ public class frmPlay extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnC;
     private javax.swing.JButton btnD;
     private javax.swing.JButton btnFinish;
+    private javax.swing.JButton btnSkip;
     private javax.swing.JLabel lblQuestion;
     private javax.swing.JPanel panAnswer;
     private javax.swing.JPanel panQuestion;
