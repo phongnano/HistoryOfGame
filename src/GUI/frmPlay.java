@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class frmPlay extends javax.swing.JInternalFrame {
@@ -189,35 +190,10 @@ public class frmPlay extends javax.swing.JInternalFrame {
 
     private void checkAnswers(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkAnswers
         key_correct = dal.getCorrectAnswer(frmMenu.i, dto);
-        if (evt.getSource().equals(btnA)) {
-            if (key_correct.equals(btnA.getText())) {
-                countCorrect++;
-                StartUp();
-            } else {
-                countWrong++;
-                StartUp();
-            }
-        }
-        if (evt.getSource().equals(btnB)) {
-            if (key_correct.equals(btnB.getText())) {
-                countCorrect++;
-                StartUp();
-            } else {
-                countWrong++;
-                StartUp();
-            }
-        }
-        if (evt.getSource().equals(btnC)) {
-            if (key_correct.equals(btnC.getText())) {
-                countCorrect++;
-                StartUp();
-            } else {
-                countWrong++;
-                StartUp();
-            }
-        }
-        if (evt.getSource().equals(btnD)) {
-            if (key_correct.equals(btnD.getText())) {
+        Object obj = evt.getSource();
+        if (obj instanceof JButton) {
+            JButton btn = (JButton) obj;
+            if (key_correct.equals(btn.getText())) {
                 countCorrect++;
                 StartUp();
             } else {
