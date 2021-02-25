@@ -29,6 +29,6 @@ values ('Chiến tranh biên giới phía bắc giữa Việt Nam và Trurng Qu�
 insert into Questions
 values ('ASEAN được thành lập năm nào?', '1966', '1969', '1967', '1962', '1967', 1);
 insert into Questions
-values ('Đâu là một trong những quốc gia tham gia sáng lập?', 'Brunei', 'Campuchia', 'Vietnam', 'Thailand', 'Thailand', 1);
+values ('Đâu là một trong những quốc gia tham gia sáng lập?', 'Brunei', 'Campuchia', 'Việt Nam', 'Thái Lan', 'Thái Lan', 1);
 insert into Questions
 values ('Đế chế Angkor thuộc quốc gia nào?', 'Malaysia', 'Indonesia', 'Lào', 'Campuchia', 'Campuchia', 1);
