@@ -63,7 +63,7 @@ public class frmPlay extends javax.swing.JInternalFrame {
 
         panQuestion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        lblQuestion.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lblQuestion.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         lblQuestion.setText("Câu hỏi");
 
         javax.swing.GroupLayout panQuestionLayout = new javax.swing.GroupLayout(panQuestion);
@@ -85,6 +85,7 @@ public class frmPlay extends javax.swing.JInternalFrame {
 
         panAnswer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
+        btnFinish.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         btnFinish.setForeground(new java.awt.Color(102, 153, 0));
         btnFinish.setText("Kết thúc");
         btnFinish.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +94,7 @@ public class frmPlay extends javax.swing.JInternalFrame {
             }
         });
 
+        btnA.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         btnA.setText("Đáp án A");
         btnA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +102,7 @@ public class frmPlay extends javax.swing.JInternalFrame {
             }
         });
 
+        btnB.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         btnB.setText("Đáp án B");
         btnB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +110,7 @@ public class frmPlay extends javax.swing.JInternalFrame {
             }
         });
 
+        btnC.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         btnC.setText("Đáp án C");
         btnC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +118,7 @@ public class frmPlay extends javax.swing.JInternalFrame {
             }
         });
 
+        btnD.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         btnD.setText("Đáp án D");
         btnD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

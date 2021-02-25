@@ -27,11 +27,11 @@ public class frmAbout extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(102, 0, 102));
         lblTitle.setText("THÔNG TIN GAME - TÁC GIẢ");
 
-        btnFB_1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnFB_1.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         btnFB_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/facebook.png"))); // NOI18N
         btnFB_1.setToolTipText("Nguyễn Hoàng Phong"); // NOI18N
         btnFB_1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -41,15 +41,15 @@ public class frmAbout extends javax.swing.JInternalFrame {
             }
         });
 
-        lblAuth_1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        lblAuth_1.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         lblAuth_1.setForeground(new java.awt.Color(0, 153, 153));
         lblAuth_1.setText("Họ tên: Nguyễn Hoàng Phong");
 
-        lblAuth_2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        lblAuth_2.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         lblAuth_2.setForeground(new java.awt.Color(0, 51, 51));
         lblAuth_2.setText("Họ tên: Nguyễn Phương Duy");
 
-        btnFB_2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnFB_2.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         btnFB_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/facebook.png"))); // NOI18N
         btnFB_2.setToolTipText("Nguyễn Phương Duy"); // NOI18N
         btnFB_2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -59,7 +59,7 @@ public class frmAbout extends javax.swing.JInternalFrame {
             }
         });
 
-        lblGame.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        lblGame.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         lblGame.setForeground(new java.awt.Color(153, 0, 0));
         lblGame.setText("GAME LỊCH SỬ");
 
@@ -68,20 +68,19 @@ public class frmAbout extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAuth_1)
+                            .addComponent(lblAuth_2))
+                        .addGap(85, 85, 85)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnFB_1)
+                            .addComponent(btnFB_2)))
                     .addComponent(lblGame)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblAuth_2)
-                                .addComponent(lblAuth_1))
-                            .addGap(86, 86, 86)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnFB_1)
-                                .addComponent(btnFB_2)))
-                        .addComponent(lblTitle)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                    .addComponent(lblTitle))
+                .addGap(86, 86, 86))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

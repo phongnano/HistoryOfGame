@@ -27,7 +27,7 @@ public class frmMenu extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        btnPlay.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        btnPlay.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         btnPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/play.png"))); // NOI18N
         btnPlay.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPlay.addActionListener(new java.awt.event.ActionListener() {
@@ -37,7 +37,7 @@ public class frmMenu extends javax.swing.JInternalFrame {
         });
 
         groups.add(radioVietNam);
-        radioVietNam.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        radioVietNam.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         radioVietNam.setForeground(new java.awt.Color(0, 51, 204));
         radioVietNam.setText("Việt Nam");
         radioVietNam.addActionListener(new java.awt.event.ActionListener() {
@@ -47,7 +47,7 @@ public class frmMenu extends javax.swing.JInternalFrame {
         });
 
         groups.add(radioSouthAsian);
-        radioSouthAsian.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        radioSouthAsian.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         radioSouthAsian.setForeground(new java.awt.Color(153, 0, 0));
         radioSouthAsian.setText("Đông Nam Á");
         radioSouthAsian.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +56,7 @@ public class frmMenu extends javax.swing.JInternalFrame {
             }
         });
 
-        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 40)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Lucida Grande", 1, 40)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(102, 102, 0));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("CHỌN KHU VỰC ĐỂ CHƠI");
@@ -66,17 +66,17 @@ public class frmMenu extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(236, 236, 236)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(230, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(radioVietNam)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(radioSouthAsian))
                     .addComponent(lblTitle))
-                .addGap(236, 236, 236))
+                .addContainerGap(230, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(428, 428, 428)
                 .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -85,13 +85,13 @@ public class frmMenu extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitle)
-                .addGap(119, 119, 119)
+                .addGap(125, 125, 125)
                 .addComponent(btnPlay)
-                .addGap(131, 131, 131)
+                .addGap(125, 125, 125)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(radioVietNam)
                     .addComponent(radioSouthAsian))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         pack();
